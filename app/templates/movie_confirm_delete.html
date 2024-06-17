@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete {{ movie.title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="container">
-        <h1>Are you sure you want to delete "{{ movie.title }}"?</h1>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <h1 class="text-center">Are you sure you want to delete "{{ movie.title }}"?</h1><br><br><br>
         <form method="POST">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger">Yes, delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'movie_detail' movie.id %}" class="btn btn-secondary" style="width: 100px;">Cancel</a>
+            </div>
         </form>
-        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+    <div class="copyright" style="width: max-content; text-align: center; position: fixed; bottom: 0px; right: 10px; opacity: 0.7;">
+        <p>&copy; Saswat Kumar<br><a href="https://saswatkumar.com" target="_blank">saswatkumar.com</a><br>
+            <a href="mailto:saswatkumar059@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/Saswat-Kumar-Pradhan" style="margin: auto 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saswat-kumar-pradhan-559b9b1b0/"><i class="fa-brands fa-linkedin-in"></i></a></p>
     </div>
 </body>
+
 </html>

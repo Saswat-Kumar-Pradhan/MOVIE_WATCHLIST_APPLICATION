@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .movie{
+            border-radius: 10px;
+            background-image: linear-gradient(royalblue, rgb(126, 156, 247));
+            padding: 20px;
+            color: white;
+            margin: 15px auto;
+        }
+        a{
+            text-decoration: none !important;
+        }
+        a:nth-last-child(5n+1) .movie {background: linear-gradient(rgb(77, 0, 77), rgb(160, 0, 160));}
+        a:nth-last-child(5n+2) .movie {background: linear-gradient(rgb(0, 19, 77), rgb(21, 0, 160));}
+        a:nth-last-child(5n+3) .movie {background: linear-gradient(rgb(77, 0, 0), rgb(160, 0, 0));}
+        a:nth-last-child(5n+4) .movie {background: linear-gradient(rgb(0, 77, 22), rgb(0, 160, 67));}
+        a:nth-last-child(5n) .movie {background: linear-gradient(rgb(51, 42, 1), rgb(159, 143, 4));}
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Movie List</h1>
-        <a href="{% url 'movie_create' %}" class="btn btn-primary">Add New Movie</a>
+        <br>
+        <h1 class="text-center">Movie List</h1>
+        <br>
+        <div class="text-center"><a href="{% url 'movie_create' %}" class="btn btn-primary">Add New Movie</a></div>
         <ul class="list-group mt-3">
-            {% for movie in movies %}
-                <li class="list-group-item">
-                    <a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a>
-                </li>
+            
+            <div class="movie-cont row">
+                {% for movie in movies %}
+                <a class="col-lg-4 col-md-4 col-sm-6 col-12" href="{% url 'movie_detail' movie.id %}">
+                    <div class="movie">
+                        <h1>{{ movie.title }}</h1>
+                    <h6>{{ movie.release_year }} | {{ movie.genre }}</h6>
+                    </div>
+                </a>
             {% endfor %}
+               
+            </div>
         </ul>
+    </div>
+    <div class="copyright" style="width: max-content; text-align: center; position: fixed; bottom: 0px; right: 10px; opacity: 0.7;">
+        <p>&copy; Saswat Kumar<br><a href="https://saswatkumar.com" target="_blank">saswatkumar.com</a><br>
+            <a href="mailto:saswatkumar059@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/Saswat-Kumar-Pradhan" style="margin: auto 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saswat-kumar-pradhan-559b9b1b0/"><i class="fa-brands fa-linkedin-in"></i></a></p>
     </div>
 </body>
 </html>

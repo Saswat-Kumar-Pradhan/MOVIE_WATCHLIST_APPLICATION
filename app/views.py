@@ -3,7 +3,7 @@ from .models import Movie
 from .forms import MovieForm
 
 def movie_list(request):
-    movies = Movie.objects.all()
+    movies = Movie.objects.all().order_by('-id')
     return render(request, 'movie_list.html', {'movies': movies})
 
 def movie_detail(request, movie_id):

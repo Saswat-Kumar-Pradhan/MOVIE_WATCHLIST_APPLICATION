@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ movie.title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .d-flex a{
+            margin: 20px;
+            width: 120px;
+        }
+        h1{
+            font-size: 70px;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>{{ movie.title }}</h1>
-        <p>{{ movie.description }}</p>
+        <br><br><br>
+        <h1 class="text-center">{{ movie.title }}</h1><hr><br>
+        <p>{{ movie.description }}</p><br>
         <p><strong>Release Year:</strong> {{ movie.release_year }}</p>
         <p><strong>Genre:</strong> {{ movie.get_genre_display }}</p>
         <p><strong>Watched:</strong> {{ movie.watched }}</p>
         <p><strong>Rating:</strong> {{ movie.rating }}</p>
         <p><strong>Review:</strong> {{ movie.review }}</p>
-        <a href="{% url 'movie_update' movie.id %}" class="btn btn-warning">Edit</a>
-        <form action="{% url 'movie_delete' movie.id %}" method="POST" class="d-inline">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Back to List</a>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'movie_update' movie.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'movie_delete' movie.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'movie_list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+    <div class="copyright" style="width: max-content; text-align: center; position: fixed; bottom: 0px; right: 10px; opacity: 0.7;">
+        <p>&copy; Saswat Kumar<br><a href="https://saswatkumar.com" target="_blank">saswatkumar.com</a><br>
+            <a href="mailto:saswatkumar059@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/Saswat-Kumar-Pradhan" style="margin: auto 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saswat-kumar-pradhan-559b9b1b0/"><i class="fa-brands fa-linkedin-in"></i></a></p>
     </div>
 </body>
 </html>

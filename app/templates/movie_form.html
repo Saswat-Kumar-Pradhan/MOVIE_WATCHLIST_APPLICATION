@@ -1,18 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if form.instance.id %}Edit Movie{% else %}Add Movie{% endif %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container{
+            width: 510px;
+            input, textarea, select{
+                background-color: rgb(190, 190, 189);
+            }
+            textarea{
+                height: 100px;
+            }
+        }
+        .toogle-btn{
+            width: 20px;
+            height: 20px;
+            accent-color: orange;
+            margin-bottom: -10px;
+        }
+        #id_rating{
+            display: flex;
+            justify-content: center;
+            input{
+                width: 50px;
+                height: 50px;
+                accent-color: orange;
+            }
+            label{
+                width: 100px;
+            }
+        }
+        button{
+            margin-right: 50px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>{% if form.instance.id %}Edit Movie{% else %}Add Movie{% endif %}</h1>
+        <br><h1 class="text-center">{% if form.instance.id %}Edit Movie{% else %}Add Movie{% endif %}</h1><br>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save</button>
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{% url 'movie_list' %}" class="btn btn-secondary">Cancel</a>
+            </div><br><br><br>
+            
         </form>
-        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+    <div class="copyright" style="width: max-content; text-align: center; position: fixed; bottom: 0px; right: 10px; opacity: 0.7;">
+        <p>&copy; Saswat Kumar<br><a href="https://saswatkumar.com" target="_blank">saswatkumar.com</a><br>
+            <a href="mailto:saswatkumar059@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/Saswat-Kumar-Pradhan" style="margin: auto 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saswat-kumar-pradhan-559b9b1b0/"><i class="fa-brands fa-linkedin-in"></i></a></p>
     </div>
 </body>
 </html>

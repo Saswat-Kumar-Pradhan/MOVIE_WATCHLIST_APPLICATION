@@ -8,9 +8,9 @@ class MovieForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'release_year': forms.NumberInput(attrs={'class': 'form-control'}),
+            'release_year': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'YYYY'}),
             'genre': forms.Select(attrs={'class': 'form-control'}),
-            'watched': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'rating': forms.RadioSelect(choices=[(i, str(i)) for i in range(1, 6)], attrs={'class': 'form-check-input'}),
+            'watched': forms.CheckboxInput(attrs={'class': 'toogle-btn'}),
+            'rating': forms.RadioSelect(choices=[(i, str(i)) for i in range(1, 6)]),
             'review': forms.Textarea(attrs={'class': 'form-control'}),
         }
