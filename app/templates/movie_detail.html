@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ movie.title }}</h1>
+        <p>{{ movie.description }}</p>
+        <p><strong>Release Year:</strong> {{ movie.release_year }}</p>
+        <p><strong>Genre:</strong> {{ movie.get_genre_display }}</p>
+        <p><strong>Watched:</strong> {{ movie.watched }}</p>
+        <p><strong>Rating:</strong> {{ movie.rating }}</p>
+        <p><strong>Review:</strong> {{ movie.review }}</p>
+        <a href="{% url 'movie_update' movie.id %}" class="btn btn-warning">Edit</a>
+        <form action="{% url 'movie_delete' movie.id %}" method="POST" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</body>
+</html>
